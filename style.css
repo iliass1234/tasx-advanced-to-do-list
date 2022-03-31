@@ -34,13 +34,15 @@ body{
     background-color: rgb(231, 231, 231);
 }
 #task-generator > input {
+    padding-left: 10px;
     display: block;
     margin-top: 10px;
     padding-top: 7px;
     border: 2px solid black;
     border-radius: 5px;
     height: 30px;
-    width: 300px;
+    min-width: 100px;
+    width: 400px;
     font-size: 20px;
     margin-left: calc(50% - 150px);
 }
