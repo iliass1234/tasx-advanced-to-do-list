@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 :root{
     margin: 0;
     font-family: tahoma;
@@ -29,9 +31,10 @@ body{
     grid-column: 2/3;
     height: 200px;
     width: calc(100%);
-    background-color: red;
+    background-color: rgb(231, 231, 231);
 }
 #task-generator > input {
+    display: block;
     margin-top: 10px;
     padding-top: 7px;
     border: 2px solid black;
@@ -40,4 +43,11 @@ body{
     width: 300px;
     font-size: 20px;
     margin-left: calc(50% - 150px);
+}
+#color-btn{
+    
+}
+#hello{
+    font-size: 10px;
+    color: red;
 }
