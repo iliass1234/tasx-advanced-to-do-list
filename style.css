@@ -4,19 +4,39 @@
 }
 body{
     display: grid;
-    grid-template-columns: minmax(100px, 200px) 1fr;
+    grid-template-columns: minmax(100px, 200px) 2fr;
     margin: 0;
     height: 100%;
 }
 #title{
-    grid-column:2/3
+    grid-column:2/3;
+    margin-left: calc(50% - 140px);
 }
 #left-side{
+    overflow-y:auto;
+    display: flex;
     position: fixed;
     grid-column: 1/2;
     height: 100vh;
     width:100%;
     min-width: 100px;
     max-width: 200px;
-    background-color: rgb(99, 99, 99);
+    background-color: rgb(158, 158, 158);
+}
+#task-generator{
+    position: relative;
+    grid-column: 2/3;
+    height: 200px;
+    width: calc(100%);
+    background-color: red;
+}
+#task-generator > input {
+    margin-top: 10px;
+    padding-top: 7px;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    font-size: 20px;
+    margin-left: calc(50% - 150px);
 }
