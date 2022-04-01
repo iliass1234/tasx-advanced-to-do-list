@@ -6,7 +6,7 @@
 }
 body{
     display: grid;
-    grid-template-columns: minmax(100px, 200px) 2fr;
+    grid-template-columns: 200px 2fr;
     margin: 0;
     height: 100%;
 }
@@ -15,6 +15,7 @@ body{
     margin-left: calc(50% - 140px);
 }
 #left-side{
+    padding-top: 50px;
     overflow-y:auto;
     display: flex;
     flex-direction: column;
@@ -27,11 +28,16 @@ body{
     background-color: rgb(158, 158, 158);
 }
 #task-generator{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
     position: relative;
     grid-column: 2/3;
     height: 200px;
-    width: calc(100%);
-    background-color: rgb(231, 231, 231);
+    width: 100%;
+    background-color: rgb(255, 255, 255);
 }
 #task-generator > input {
     padding-left: 10px;
@@ -44,12 +50,21 @@ body{
     min-width: 100px;
     width: 400px;
     font-size: 20px;
-    margin-left: calc(50% - 150px);
 }
-#color-btn{
-    
+.buttns{
+    color: #145;
+    background-color: transparent;
+    padding:5px;
+    border-radius: 50%;
+    transition: 0.5s;
 }
-#hello{
-    font-size: 10px;
-    color: red;
+.buttns:hover{
+    cursor: pointer;
+    background-color: #ddd;
+}
+#buttons-div{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    background-color: transparent;
 }
