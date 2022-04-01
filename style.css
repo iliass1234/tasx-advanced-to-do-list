@@ -15,8 +15,8 @@ body{
     margin-left: calc(50% - 140px);
 }
 #left-side{
-    border-right: 2px solid black;
-    padding-top: 50px;
+    border-right: 1px solid black;
+    padding-top: 0px;
     overflow-y:auto;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,9 @@ body{
     max-width: 200px;
     background-color: rgb(255, 255, 255);
 }
+#left-side > h2{
+    margin-left: 10px;
+}
 #delete-all-btn{
     justify-self:end;
     position: absolute;
@@ -35,6 +38,7 @@ body{
     left: 10px;
 }
 #task-generator{
+    margin: 0px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -45,18 +49,19 @@ body{
     height: 160px;
     width: 100%;
     background-color: rgb(255, 255, 255);
+    padding-bottom: 0px;
 }
 #task-generator > input {
     padding-left: 10px;
     display: block;
     margin-top: 10px;
     padding-top: 7px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
     height: 30px;
     min-width: 100px;
-    width: 400px;
-    font-size: 20px;
+    width: calc(100% - 40px);
+    font-size: 18px;
 }
 .buttns{
     color: #145;
@@ -95,6 +100,7 @@ body{
     background-color: rgb(255, 255, 255);
     height: 400px;
     width: 100%;
+    margin: 0px;
 }
 #in-progress-word{
     margin-left: 20px;
