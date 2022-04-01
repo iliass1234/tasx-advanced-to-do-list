@@ -29,10 +29,13 @@
 
                 </div>
             </div>
-            <button class="green-btn" id="start-btn">Start</button>
-            <input type="range" step="5" min="20" max="60">
-        </div>
+            <div id="pomodoro-config">
+                <h1>35:min</h1>
+                <input type="range" step="1" min="1" max="6">
+                <button onclick="startBtnClick()" class="green-btn" id="start-btn">Start</button>
 
+            </div>
+        </div>
     </section>
     <section id="bottom-section">
         <h1 id="in-progress-word">In progress: </h1>

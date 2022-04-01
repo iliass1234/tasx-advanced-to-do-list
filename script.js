@@ -1,7 +1,8 @@
-let textArea = document.querySelector('#task-generator > input');
-let leftSide = document.querySelector('aside');
-
+const textArea = document.querySelector('#task-generator > input');
+const leftSide = document.querySelector('aside');
+const inputRange = document.querySelector('#pomodoro-config > input');
 let textOnFocus = false;
+
 
 function createAtask(text){
     let node = document.createElement('div');
@@ -87,4 +88,7 @@ function pomodoroClock(timeInMinutes){
         
     } 
 }
-pomodoroClock(10);
+function startBtnClick(){
+    pomodoroClock(Number(inputRange.value));
+}
+
