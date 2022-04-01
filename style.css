@@ -95,10 +95,17 @@ body{
     grid-column: 2/3;
     display: flex;
 }
-#section-two{
+#pomodoro-section{
+    position: relative;
+    display: flex;
     height: 100%;
     width: 100%;
     background-color: rgb(255, 233, 233);
+}
+#pomodoro-section > h3{
+    position:absolute;
+    right: 10px;
+    top: -10px;
 }
 #bottom-section{
     grid-column: 2/3;
@@ -127,4 +134,23 @@ body{
 #delete-all-btn:hover{
     background-color: rgb(220, 220, 220);
 
+}
+
+#clock-circle{
+    background-color: rgb(0, 0, 0);
+    margin-top:10px;
+    margin-left: 10px;
+    border-radius: 50%;
+    height: 140px;
+    width: 140px;
+    position: relative;
+}
+#clock-indicator{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    height: 120px;
+    width: 3px;
+    background: linear-gradient(red, black, black);
 }
