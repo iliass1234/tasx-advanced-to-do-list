@@ -13,15 +13,19 @@
 <body>
     <h1 id="title">Add some tasks..</h1>
     <section id="task-generator">
-        <input type="text" placeholder="write a task..">
+        <input type="text" placeholder="create a task..">
         <div id="buttons-div">
             <i id="choose-color-btn" class="material-icons buttns">palette</i>
             <i id="important-btn" class="material-icons buttns">star_rate</i>
-
         </div>
+        <button onclick="createrButton()" id="create-btn">create</button>
+    </section>
+    <section id="bottom-section">
+        <h1 id="in-progress-word">In progress: </h1>
 
     </section>
     <aside id="left-side">
+        <button onclick="deleteAll()" id="delete-all-btn">delete all</button>
     </aside>
     <script src="./script.js"></script>
 </body>

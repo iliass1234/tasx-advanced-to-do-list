@@ -2,7 +2,7 @@
 
 :root{
     margin: 0;
-    font-family: tahoma;
+    font-family: tahoma, sans-serif;
 }
 body{
     display: grid;
@@ -15,6 +15,7 @@ body{
     margin-left: calc(50% - 140px);
 }
 #left-side{
+    border-right: 2px solid black;
     padding-top: 50px;
     overflow-y:auto;
     display: flex;
@@ -25,7 +26,13 @@ body{
     width:100%;
     min-width: 100px;
     max-width: 200px;
-    background-color: rgb(158, 158, 158);
+    background-color: rgb(255, 255, 255);
+}
+#delete-all-btn{
+    justify-self:end;
+    position: absolute;
+    bottom: 60px;
+    left: 10px;
 }
 #task-generator{
     display: flex;
@@ -35,7 +42,7 @@ body{
     align-items: center;
     position: relative;
     grid-column: 2/3;
-    height: 200px;
+    height: 160px;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
@@ -67,4 +74,29 @@ body{
     justify-content: center;
     gap:10px;
     background-color: transparent;
+}
+#create-btn{
+    font-size: 16px;
+    color: white;
+    background-color: rgb(12, 94, 72);
+    border: 1px solid black;
+    padding: 5px 30px;;
+    border-radius: 3px;
+    transition: 0.5s;
+}
+#create-btn:hover{
+    cursor: pointer;
+    border:none;
+    background-color: rgb(34, 125, 105);
+}
+#bottom-section{
+    grid-column: 2/3;
+    border: 1px solid black;
+    background-color: rgb(255, 255, 255);
+    height: 400px;
+    width: 100%;
+}
+#in-progress-word{
+    margin-left: 20px;
+    text-decoration: underline;
 }
