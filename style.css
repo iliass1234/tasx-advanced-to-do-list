@@ -12,11 +12,12 @@ body{
 }
 #title{
     grid-column:2/3;
-    margin-left: calc(50% - 140px);
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 #left-side{
     border-right: 1px solid black;
-    padding-top: 0px;
+    padding-top: 60px;
     overflow-y:auto;
     display: flex;
     flex-direction: column;
@@ -29,20 +30,16 @@ body{
     background-color: rgb(255, 255, 255);
 }
 #left-side > h2{
-    margin-left: 10px;
-}
-#delete-all-btn{
-    justify-self:end;
     position: absolute;
-    bottom: 60px;
-    left: 10px;
+    top: 0px;
+    margin-left: 10px;
 }
 #task-generator{
     margin: 0px;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    gap: 10px;
+    gap: 0px;
     align-items: center;
     position: relative;
     grid-column: 2/3;
@@ -94,6 +91,16 @@ body{
     border:none;
     background-color: rgb(34, 125, 105);
 }
+#top-section{
+    margin-bottom: 10px;
+    grid-column: 2/3;
+    display: flex;
+}
+#section-two{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
 #bottom-section{
     grid-column: 2/3;
     border: 1px solid black;
@@ -105,4 +112,20 @@ body{
 #in-progress-word{
     margin-left: 20px;
     text-decoration: underline;
+}
+#delete-all-btn{
+    color: rgb(210, 51, 16);
+    background-color: transparent;
+    padding:0;
+    height: 35px; width: 35px;
+    border-radius: 50%;
+    border: none;
+    transition: 0.5s;
+    position: absolute;
+    top: 19px;
+    right:15px;
+}
+#delete-all-btn:hover{
+    background-color: rgb(220, 220, 220);
+
 }

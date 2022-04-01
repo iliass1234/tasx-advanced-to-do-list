@@ -12,7 +12,7 @@ function createAtask(text){
     checkBtn.style = 'color: white; font-weight: 900;padding: 0;border-radius: 3px;height: 20px; width: 20px; background-color: green;margin-right: 20px;border:none;'
     h2.innerText = text;
     h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
-    node.style = 'background-color: yellow;border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: 40px;width: 100%;'
+    node.style = 'background-color: lightgreen;border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
 
     checkBtn.onclick = function(){
         leftSide.removeChild(node);

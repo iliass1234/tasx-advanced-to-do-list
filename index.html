@@ -11,14 +11,21 @@
     <title>tasx</title>
 </head>
 <body>
-    <h1 id="title">Add some tasks..</h1>
-    <section id="task-generator">
-        <input type="text" placeholder="create a task..">
-        <div id="buttons-div">
-            <i id="choose-color-btn" class="material-icons buttns">palette</i>
-            <i id="important-btn" class="material-icons buttns">star_rate</i>
+    <section id="top-section">
+
+        <div id="task-generator">
+            <h1 id="title">Add some tasks..</h1>
+            <input type="text" placeholder="create a task..">
+            <div id="buttons-div">
+                <i id="choose-color-btn" class="material-icons buttns">palette</i>
+                <i id="important-btn" class="material-icons buttns">star_rate</i>
+            </div>
+            <button onclick="createrButton()" id="create-btn">create</button>
         </div>
-        <button onclick="createrButton()" id="create-btn">create</button>
+        <div id="section-two">
+            
+        </div>
+
     </section>
     <section id="bottom-section">
         <h1 id="in-progress-word">In progress: </h1>
@@ -26,7 +33,12 @@
     </section>
     <aside id="left-side">
         <h2>Tasks:</h2>
-        <button onclick="deleteAll()" id="delete-all-btn">delete all</button>
+        <button onclick="deleteAll()" id="delete-all-btn">
+            <span class="material-icons">
+                delete_sweep
+                </span>
+        
+        </button>
     </aside>
     <script src="./script.js"></script>
 </body>
