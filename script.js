@@ -12,8 +12,10 @@ function createAtask(text){
     checkBtn.style = 'color: white; font-weight: 900;padding: 0;border-radius: 3px;height: 20px; width: 20px; background-color: green;margin-right: 20px;border:none;'
     h2.innerText = text;
     h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
-    node.style = 'background-color: lightgreen;border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
-
+    node.style = 'opacity: 0;transition: 0.5s;background-color: lightgreen;border-bottom: 0px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
+    setTimeout(() => {
+        node.style.opacity = 1;
+    }, 100);
     node.onmouseover = function(){
         this.style.backgroundColor = "rgb(200,255,200)";
         this.style.cursor = "pointer";
@@ -62,7 +64,7 @@ function createrButton(){
 }
 
 function deleteAll(){
-    const arr = document.querySelectorAll('.one-task');
+    const arr = document.querySelectorAll('#left-side > .one-task');
     for (const task of arr) {
         leftSide.removeChild(task);
     }
