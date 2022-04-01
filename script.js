@@ -69,3 +69,22 @@ function deleteAll(){
         leftSide.removeChild(task);
     }
 }
+
+function pomodoroClock(timeInMinutes){
+    const indicator = document.querySelector('#clock-indicator');
+
+    let unitOfTime = 360/60;
+    unitOfTime /= timeInMinutes;
+
+     for (let i = 1; i <= 360/unitOfTime; i++) {
+        setTimeout(function(){
+            let ii = i;
+            if (i === 360) {
+                indicator.style.backgroundColor = 'red';
+            }
+            indicator.style.transform = `translate(-50%, -50%) rotate(${i*unitOfTime}deg)`;
+        },1000*i)
+        
+    } 
+}
+pomodoroClock(10);
