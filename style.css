@@ -92,7 +92,6 @@ body{
     background-color: rgb(34, 125, 105);
 }
 #top-section{
-    margin-bottom: 10px;
     grid-column: 2/3;
     display: flex;
 }

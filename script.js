@@ -14,8 +14,24 @@ function createAtask(text){
     h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
     node.style = 'background-color: lightgreen;border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
 
+    node.onmouseover = function(){
+        this.style.backgroundColor = "rgb(200,255,200)";
+        this.style.cursor = "pointer";
+    }
+    node.onmouseleave = function(){
+        this.style.backgroundColor = "lightgreen";
+        this.style.cursor = "pointer";
+    }
+    node.onclick = ()=>{
+        const playground = document.querySelector('#bottom-section');
+        playground.append(node);
+    }
     checkBtn.onclick = function(){
-        leftSide.removeChild(node);
+        try {
+            leftSide.removeChild(node);
+        } catch (error) {
+            console.log('I see')
+        }
     }
     node.append(h2, checkBtn);
     return node;
