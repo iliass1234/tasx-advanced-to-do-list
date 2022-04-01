@@ -1,6 +1,10 @@
 const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
+const pomodoroScreen = document.querySelector('#pomodoro-config > h1');
+
+var timeoutsId;
+
 let textOnFocus = false;
 
 
@@ -55,7 +59,6 @@ textArea.onkeydown = function(e){
         textArea.value = '';
     }
 }
-
 function createrButton(){
     if (textArea.value.length > 0) {
         let text = textArea.value;
@@ -70,25 +73,37 @@ function deleteAll(){
         leftSide.removeChild(task);
     }
 }
-
 function pomodoroClock(timeInMinutes){
     const indicator = document.querySelector('#clock-indicator');
+    // the following line to reset everything;
+    indicator.style.transform = `translate(-50%, -50%) rotate(${0}deg)`
+
+    while(timeoutsId){
+        window.clearTimeout(timeoutsId)
+        timeoutsId--
+    }
 
     let unitOfTime = 360/60;
     unitOfTime /= timeInMinutes;
 
      for (let i = 1; i <= 360/unitOfTime; i++) {
-        setTimeout(function(){
+        timeoutsId = setTimeout(function(){
             let ii = i;
             if (i === 360) {
                 indicator.style.backgroundColor = 'red';
             }
             indicator.style.transform = `translate(-50%, -50%) rotate(${i*unitOfTime}deg)`;
-        },1000*i)
-        
+        },1000*i);
+        console.log(timeoutsId)
     } 
 }
 function startBtnClick(){
     pomodoroClock(Number(inputRange.value));
 }
 
+function changePomodoroScreen(){
+    console.log('hello');
+    pomodoroScreen.innerText = `${inputRange.value}:min`;
+}
+
+inputRange.oninput = changePomodoroScreen;
