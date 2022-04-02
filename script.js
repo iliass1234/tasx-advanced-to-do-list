@@ -4,10 +4,13 @@ const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
 const pomodoroScreen = document.querySelector('#pomodoro-config > h2');
+const importantBtn = document.querySelector('#important-btn');
+
+
+let isImportantTask = false;
 let isClockRunning = false;
 
 var timeoutsId;
-
 let textOnFocus = false;
 
 
@@ -25,16 +28,22 @@ function createAtask(text){
     h2.innerText = text;
     h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
     node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(90deg,rgb(114, 191, 165),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
+    if (isImportantTask) {
+        node.dataset.important = true;
+        node.style.background = 'linear-gradient(90deg,gold,white)';
+    }
     setTimeout(() => {
         node.style.opacity = 1;
     }, 100);
     node.onmouseover = function(){
-        this.style.background = 'linear-gradient(90deg,rgb(114, 191, 165),white)';
         this.style.cursor = "pointer";
+        if (node.dataset.important) return;
+        this.style.background = 'linear-gradient(90deg,rgb(114, 191, 165),white)';
     }
     node.onmouseleave = function(){
-        this.style.background = 'linear-gradient(90deg,rgb(120, 200, 175),white)';
         this.style.cursor = "pointer";
+        if (node.dataset.important) return;
+        this.style.background = 'linear-gradient(90deg,rgb(120, 200, 175),white)';
     }
     node.onclick = ()=>{
         playground.append(node);
@@ -51,6 +60,9 @@ function createAtask(text){
         }
     }
     node.append(h2, checkBtn);
+
+    importantBtn.style.color = 'rgb(71, 121, 104)';
+    isImportantTask = false;
     return node;
 }
 textArea.onfocus = function(){
@@ -134,4 +146,13 @@ function changePomodoroScreen(){
 
 
 
+importantBtn.onclick = function(){
+    if (!isImportantTask) {
+        this.style.color = 'gold';
+        isImportantTask = true;
+    }else{
+        this.style.color = 'rgb(71, 121, 104)';
+        isImportantTask = false;
+    }
+}
 inputRange.oninput = changePomodoroScreen;
