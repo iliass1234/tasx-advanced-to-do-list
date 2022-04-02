@@ -83,15 +83,22 @@ function deleteAll(){
         leftSide.removeChild(task);
     }
 }
-function pomodoroClock(timeInMinutes){
-    const indicator = document.querySelector('#clock-indicator');
-    // the following line to reset everything;
-    indicator.style.transform = `translate(-50%, -50%) rotate(${0}deg)`
-
+function resetClock(){
+    document.querySelector('#clock-indicator').style.transform = `translate(-50%, -50%) rotate(${0}deg)`
+    
     while(timeoutsId){
         window.clearTimeout(timeoutsId)
         timeoutsId--
     }
+
+}
+
+function pomodoroClock(timeInMinutes){
+    const indicator = document.querySelector('#clock-indicator');
+    // the following line to reset everything;
+    resetClock();
+
+
 
     let unitOfTime = 360/60;
     unitOfTime /= timeInMinutes;
@@ -115,11 +122,12 @@ function pomodoroClock(timeInMinutes){
 function startBtnClick(node){
     if (!isClockRunning) {
         pomodoroClock(Number(inputRange.value));
-        node.innerText = 'cancel';
+        node.innerText = 'Reset';
         isClockRunning = true;
     }else{
+        resetClock();
         isClockRunning = false;
-        node.innerText = 'cant stop';
+        node.innerText = 'Start';
     }
 }
 
