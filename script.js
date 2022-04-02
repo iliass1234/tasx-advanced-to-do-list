@@ -1,3 +1,4 @@
+const playground = document.querySelector('#bottom-section');
 const audio = new Audio('./death.mp3');
 const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
@@ -14,31 +15,38 @@ function createAtask(text){
     let checkBtn = document.createElement('button');
     let h2 = document.createElement('h2');
     node.className = 'one-task';
-    checkBtn.textContent = 'v';
-    checkBtn.style = 'color: white; font-weight: 900;padding: 0;border-radius: 3px;height: 20px; width: 20px; background-color: green;margin-right: 20px;border:none;'
+    checkBtn.style = 'font-size: 5px;color: black; padding: 0; border-radius: 50%; height: 30px; width: 30px;border:none;margin-right: 30px;'
+    deleteIcon = document.createElement('span');
+
+    deleteIcon.className = 'material-icons';
+    deleteIcon.innerText = 'delete';
+    checkBtn.appendChild(deleteIcon);
     h2.innerText = text;
-    h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
-    node.style = 'opacity: 0;transition: 0.5s;background-color: lightgreen;border-bottom: 0px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
+    h2.style = 'font-weight: 600;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
+    node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(45deg,rgba(0,0,0,0.2),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
     setTimeout(() => {
         node.style.opacity = 1;
     }, 100);
     node.onmouseover = function(){
-        this.style.backgroundColor = "rgb(200,255,200)";
+        this.style.background = 'linear-gradient(45deg,rgba(0,0,0,0.4),white)';
         this.style.cursor = "pointer";
     }
     node.onmouseleave = function(){
-        this.style.backgroundColor = "lightgreen";
+        this.style.background = "linear-gradient(45deg,rgba(0,0,0,0.2),white)";
         this.style.cursor = "pointer";
     }
     node.onclick = ()=>{
-        const playground = document.querySelector('#bottom-section');
         playground.append(node);
     }
-    checkBtn.onclick = function(){
+    checkBtn.onclick = function(e){
+        e.stopPropagation();
         try {
             leftSide.removeChild(node);
         } catch (error) {
-            console.log('I see')
+        }
+        try {
+            playground.removeChild(node);
+        } catch (error) {
         }
     }
     node.append(h2, checkBtn);
@@ -91,13 +99,16 @@ function pomodoroClock(timeInMinutes){
         timeoutsId = setTimeout(function(){
             console.log(i);
             if (i === 360/unitOfTime) {
-                audio.play()
-                console.log('i reached : ', audio)
-                indicator.style.backgroundColor = 'red';
+                audio.play();
+                indicator.style.background = 'linear-gradient(rgb(51, 255, 0), red, red)';
+                document.querySelector('#clock-circle').style.backgroundColor = 'red';
+                setTimeout(()=>{
+                    indicator.style.background = 'linear-gradient(rgb(51, 255, 0), black, black)';
+                    document.querySelector('#clock-circle').style.backgroundColor = 'black';
+                },3000);
             }
             indicator.style.transform = `translate(-50%, -50%) rotate(${i*unitOfTime}deg)`;
         },1000*i);
-        console.log(timeoutsId)
     } 
 }
 function startBtnClick(){

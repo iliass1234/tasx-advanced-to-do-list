@@ -6,7 +6,7 @@
 }
 body{
     display: grid;
-    grid-template-columns: 200px 2fr;
+    grid-template-columns: 300px 2fr;
     margin: 0;
     height: 100%;
 }
@@ -26,7 +26,7 @@ body{
     height: 100vh;
     width:100%;
     min-width: 100px;
-    max-width: 200px;
+    max-width: 300px;
     background-color: rgb(255, 255, 255);
 }
 #left-side > h2{
@@ -97,11 +97,12 @@ body{
     display: flex;
 }
 #pomodoro-section{
+    border-left: 1px solid black;
     position: relative;
     display: flex;
     height: 100%;
     width: 100%;
-    background-color: rgb(255, 233, 233);
+    background-color: rgb(255, 246, 246);
 }
 #pomodoro-section > h3{
     position:absolute;
@@ -144,6 +145,7 @@ body{
     height: 140px;
     width: 140px;
     position: relative;
+    transition: 1s;
 }
 #clock-indicator{
     position:absolute;
@@ -153,6 +155,7 @@ body{
     height: 120px;
     width: 3px;
     background: linear-gradient(rgb(51, 255, 0), black, black);
+    transition: 1s;
 }
 #pomodoro-section > input{
     width: 100px;
@@ -160,7 +163,7 @@ body{
 #pomodoro-config{
     margin-left: 10px;
     padding: 10px 10px;
-    background-color: rgb(248, 201, 201);
+    background-color: rgb(249, 233, 233);
     display: flex;
     flex-direction: column;
     justify-content: center;
