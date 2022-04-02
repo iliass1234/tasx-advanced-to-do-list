@@ -1,3 +1,4 @@
+const audio = new Audio('./death.mp3');
 const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
@@ -85,11 +86,13 @@ function pomodoroClock(timeInMinutes){
 
     let unitOfTime = 360/60;
     unitOfTime /= timeInMinutes;
-
-     for (let i = 1; i <= 360/unitOfTime; i++) {
+    
+    for (let i = 1; i <= 360/unitOfTime; i++) {
         timeoutsId = setTimeout(function(){
-            let ii = i;
-            if (i === 360) {
+            console.log(i);
+            if (i === 360/unitOfTime) {
+                audio.play()
+                console.log('i reached : ', audio)
                 indicator.style.backgroundColor = 'red';
             }
             indicator.style.transform = `translate(-50%, -50%) rotate(${i*unitOfTime}deg)`;
@@ -105,5 +108,7 @@ function changePomodoroScreen(){
     console.log('hello');
     pomodoroScreen.innerText = `${inputRange.value}:min`;
 }
+
+
 
 inputRange.oninput = changePomodoroScreen;
