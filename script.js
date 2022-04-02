@@ -2,7 +2,7 @@ const audio = new Audio('./death.mp3');
 const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
-const pomodoroScreen = document.querySelector('#pomodoro-config > h1');
+const pomodoroScreen = document.querySelector('#pomodoro-config > h2');
 
 var timeoutsId;
 
