@@ -2,13 +2,40 @@
 
 :root{
     margin: 0;
-    font-family: tahoma, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 body{
     display: grid;
     grid-template-columns: 300px 2fr;
     margin: 0;
     height: 100%;
+}
+#undo-messege{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 2/3;
+    position: absolute;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    z-index: 2;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(69, 69, 69);
+}
+#undo-messege > button{
+    color: lightgreen;
+    background-color: transparent;
+    border: none;
+}
+#undo-messege > button:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 #navBar{
     height: 40px; 
@@ -22,6 +49,7 @@ body{
     margin-top: 10px;
 }
 #left-side{
+    z-index: 1;
     margin-top: 40px;
     border-right: 1px solid black;
     padding-top: 60px;
