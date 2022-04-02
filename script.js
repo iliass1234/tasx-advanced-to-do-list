@@ -4,6 +4,7 @@ const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
 const pomodoroScreen = document.querySelector('#pomodoro-config > h2');
+let isClockRunning = false;
 
 var timeoutsId;
 
@@ -23,7 +24,7 @@ function createAtask(text){
     checkBtn.appendChild(deleteIcon);
     h2.innerText = text;
     h2.style = 'font-weight: 600;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
-    node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(45deg,rgba(0,0,0,0.2),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
+    node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(90deg,rgb(114, 191, 165),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
     setTimeout(() => {
         node.style.opacity = 1;
     }, 100);
@@ -111,8 +112,15 @@ function pomodoroClock(timeInMinutes){
         },1000*i);
     } 
 }
-function startBtnClick(){
-    pomodoroClock(Number(inputRange.value));
+function startBtnClick(node){
+    if (!isClockRunning) {
+        pomodoroClock(Number(inputRange.value));
+        node.innerText = 'cancel';
+        isClockRunning = true;
+    }else{
+        isClockRunning = false;
+        node.innerText = 'cant stop';
+    }
 }
 
 function changePomodoroScreen(){
