@@ -23,7 +23,7 @@ function createAtask(text){
     deleteIcon.innerText = 'delete';
     checkBtn.appendChild(deleteIcon);
     h2.innerText = text;
-    h2.style = 'font-weight: 600;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
+    h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
     node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(90deg,rgb(114, 191, 165),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
     setTimeout(() => {
         node.style.opacity = 1;

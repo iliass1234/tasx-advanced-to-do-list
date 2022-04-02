@@ -59,13 +59,16 @@ body{
     padding-left: 10px;
     display: block;
     margin-top: 10px;
-    padding-top: 7px;
+    padding-top: 3px;
     border: 1px solid black;
     border-radius: 5px;
     height: 30px;
     min-width: 100px;
     width: calc(100% - 40px);
     font-size: 18px;
+}
+#task-generator > input:focus{
+    outline: none;
 }
 .buttns{
     color: rgb(71, 121, 104);
@@ -177,6 +180,7 @@ body{
     justify-content: center;
 }
 #pomodoro-config > h2{
+    font-weight: 400;
     margin-left: 20px;
     border-radius: 5px;
     color: rgb(33, 212, 72);
