@@ -29,11 +29,11 @@ function createAtask(text){
         node.style.opacity = 1;
     }, 100);
     node.onmouseover = function(){
-        this.style.background = 'linear-gradient(45deg,rgba(0,0,0,0.4),white)';
+        this.style.background = 'linear-gradient(90deg,rgb(114, 191, 165),white)';
         this.style.cursor = "pointer";
     }
     node.onmouseleave = function(){
-        this.style.background = "linear-gradient(45deg,rgba(0,0,0,0.2),white)";
+        this.style.background = 'linear-gradient(90deg,rgb(120, 200, 175),white)';
         this.style.cursor = "pointer";
     }
     node.onclick = ()=>{
@@ -105,14 +105,11 @@ function pomodoroClock(timeInMinutes){
     
     for (let i = 1; i <= 360/unitOfTime; i++) {
         timeoutsId = setTimeout(function(){
-            console.log(i);
             if (i === 360/unitOfTime) {
                 audio.play();
-                indicator.style.background = 'linear-gradient(rgb(51, 255, 0), red, red)';
-                document.querySelector('#clock-circle').style.backgroundColor = 'red';
+                indicator.style.background = 'linear-gradient(red, black, black)';
                 setTimeout(()=>{
                     indicator.style.background = 'linear-gradient(rgb(51, 255, 0), black, black)';
-                    document.querySelector('#clock-circle').style.backgroundColor = 'black';
                 },3000);
             }
             indicator.style.transform = `translate(-50%, -50%) rotate(${i*unitOfTime}deg)`;
@@ -132,7 +129,6 @@ function startBtnClick(node){
 }
 
 function changePomodoroScreen(){
-    console.log('hello');
     pomodoroScreen.innerText = `${inputRange.value}:min`;
 }
 
