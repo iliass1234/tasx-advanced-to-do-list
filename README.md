@@ -7,3 +7,5 @@ this app constitute of three parts so far:
 .pomodoro
 
 each part is saparated and have it's own functionality.
+## pomodoro-section:
+in pomodoro section you'll find a clock and timmer you can choose between five time intrevals 
