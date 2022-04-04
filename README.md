@@ -8,5 +8,6 @@ this app constitute of three parts so far:
 
 each part is saparated and have it's own functionality.
 ## pomodoro-section:
-in pomodoro section you'll find a clock and timmer and start button you can choose between five time intrevals 
+in pomodoro section you'll find a clock and timmer and start button you can choose between five time intrevals .
+
 
