@@ -52,7 +52,7 @@ body{
 .one-task{
     opacity: 0;
     transition: 0.5s;
-    background: linear-gradient(90deg,rgb(114, 191, 165),white);
+    background: linear-gradient(90deg,rgb(165, 255, 205),white);
     border-bottom: 1px solid black;
     padding-left: 10px; 
     align-items: center;
@@ -60,15 +60,14 @@ body{
     margin-top: 3px;
     display: flex;
     font-size: 10px; 
-    color: white; 
     height: auto;
     width: 100%;
 }
 .one-task > h2{
     font-weight: 300;
     font-family: tahoma, sans-serif;
-    font-size: 17px; 
-    color: black;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
 }
 #undo-messege{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -246,8 +245,8 @@ body{
     margin-top:10px;
     margin-left: 10px;
     border-radius: 50%;
-    height: 90px;
-    width: 90px;
+    height: 105px;
+    width: 105px;
     position: relative;
     transition: 1s;
 }

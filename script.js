@@ -96,7 +96,7 @@ function createAtask(taskObject){
     node.onmouseleave = function(){
         this.style.cursor = "pointer";
         if (node.dataset.important) return;
-        this.style.background = 'linear-gradient(90deg,rgb(120, 200, 175),white)';
+        this.style.background = 'linear-gradient(90deg,rgb(165, 255, 205),white)';
     }
     node.onclick = ()=>{
         const p = document.querySelector('#bottom-section > p');
@@ -108,15 +108,16 @@ function createAtask(taskObject){
     checkBtn.onclick = function(e){
         e.stopPropagation();
         localStorage.removeItem(taskObject.id);
+        console.log(playground.childElementCount)
         try {
             leftSide.removeChild(node);
         } catch (error) {
-            if (leftSide.children < 3) {
+            playground.removeChild(node);
+            if (playground.childElementCount <= 2) {
                 console.log('hna');
                 const p = document.querySelector('#bottom-section > p');
-                p.style.display = 'none';
+                p.style.display = 'block';
             }
-            playground.removeChild(node);
         }
     }
     node.append(h2, checkBtn);
