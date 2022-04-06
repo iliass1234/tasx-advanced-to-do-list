@@ -1,5 +1,5 @@
 const playground = document.querySelector('#bottom-section');
-const audio = new Audio('./death.mp3');
+const audio = new Audio('./alarm.mp3');
 const textArea = document.querySelector('#task-generator > input');
 const leftSide = document.querySelector('aside');
 const inputRange = document.querySelector('#pomodoro-config > input');
@@ -107,10 +107,7 @@ function createAtask(taskObject){
         try {
             leftSide.removeChild(node);
         } catch (error) {
-        }
-        try {
             playground.removeChild(node);
-        } catch (error) {
         }
     }
     node.append(h2, checkBtn);
@@ -194,13 +191,9 @@ function startBtnClick(node){
         resetClock();
     }
 }
-
 function changePomodoroScreen(){
     pomodoroScreen.innerText = `${inputRange.value}:min`;
 }
-
-
-
 importantBtn.onclick = function(){
     if (!isImportantTask) {
         this.style.color = 'gold';
