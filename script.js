@@ -11,6 +11,7 @@ let isImportantTask = false;
 let isClockRunning = false;
 
 var timeoutsId;
+var undoTimeouts;
 let textOnFocus = false;
 
 function startLocalStorage(){
@@ -42,7 +43,7 @@ drawTasks();
 function returnValidTaskId(){
     let lastId = Number(localStorage.getItem('lastTaskId'));
     console.log('valid id :'+lastId);
-    return lastId++;
+    return 'task-'+lastId++;
 }
 
 function increaseLastTaskId(){
@@ -59,8 +60,7 @@ function returnTaskObj(text, color){
     taskObj.text = text;
     taskObj.color = color;
 
-    let fullTaskId = 'task-'+taskObj.id;
-    localStorage.setItem(fullTaskId, `${JSON.stringify(taskObj)}`);
+    localStorage.setItem(taskObj.id, `${JSON.stringify(taskObj)}`);
     increaseLastTaskId();
 
     return taskObj;
@@ -100,13 +100,23 @@ function createAtask(taskObject){
         this.style.background = 'linear-gradient(90deg,rgb(120, 200, 175),white)';
     }
     node.onclick = ()=>{
+        const p = document.querySelector('#bottom-section > p');
+        p.style.display = 'none';
         playground.append(node);
+        console.log(p);
+       
     }
     checkBtn.onclick = function(e){
         e.stopPropagation();
+        localStorage.removeItem(taskObject.id);
         try {
             leftSide.removeChild(node);
         } catch (error) {
+            if (leftSide.children < 3) {
+                console.log('hna');
+                const p = document.querySelector('#bottom-section > p');
+                p.style.display = 'none';
+            }
             playground.removeChild(node);
         }
     }
