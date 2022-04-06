@@ -13,22 +13,75 @@ let isClockRunning = false;
 var timeoutsId;
 let textOnFocus = false;
 
+function startLocalStorage(){
+    if(!localStorage.getItem('lastTaskId')){
+        localStorage.setItem('lastTaskId','0');
+    }
+}
+startLocalStorage();
 
-function createAtask(text){
+function drawTasks(){
+    const lastTaskId = Number(localStorage.getItem('lastTaskId'));
+
+    for (let i = 0; i <= lastTaskId; i++) {
+        let task = localStorage.getItem('task'+i);
+        task = JSON.parse(task);
+        if (!task) {
+            continue;
+        }
+        textArea.value = task.text;
+        const firstChild = leftSide.firstChild;
+        leftSide.insertBefore(firstChild, createAtask());
+        
+    }
+}
+
+//drawTasks();
+
+function returnValidTaskId(){
+    let lastId = Number(localStorage.getItem('lastTaskId'));
+    console.log('valid id :'+lastId);
+    return lastId++;
+}
+function increaseLastTaskId(){
+    let lastId = localStorage.getItem('lastTaskId');
+    lastId = Number(lastId)+1;
+    localStorage.setItem('lastTaskId', `${lastId}`);
+}
+
+function returnTaskObj(text, color){
+    color = color || 'white';
+    const taskObj = {};
+    taskObj.id = returnValidTaskId();
+    taskObj.importance = isImportantTask;
+    taskObj.text = text;
+    taskObj.color = color;
+
+    let fullTaskId = 'task-'+taskObj.id;
+    localStorage.setItem(fullTaskId, `${JSON.stringify(taskObj)}`);
+
+    return taskObj;
+
+}
+
+
+function createAtask(){
+    const text = textArea.value;
+    const taskObject = returnTaskObj(text);
+
     let node = document.createElement('div');
     let checkBtn = document.createElement('button');
     let h2 = document.createElement('h2');
     node.className = 'one-task';
-    checkBtn.style = 'font-size: 5px;color: black; padding: 0; border-radius: 50%; height: 30px; width: 30px;border:none;margin-right: 30px;'
+    checkBtn.className = 'check-btn';
     deleteIcon = document.createElement('span');
-
     deleteIcon.className = 'material-icons';
     deleteIcon.innerText = 'delete';
     checkBtn.appendChild(deleteIcon);
-    h2.innerText = text;
-    h2.style = 'font-weight: 300;font-family: tahoma, sans-serif;font-size: 17px; color: black;'
-    node.style = 'opacity: 0;transition: 0.5s;background: linear-gradient(90deg,rgb(114, 191, 165),white);border-bottom: 1px solid black;padding-left: 10px; align-items: center;justify-content: space-between; margin-top: 3px;; display: flex;font-size: 10px; color: white; height: auto;width: 100%;'
-    if (isImportantTask) {
+
+    h2.innerText = taskObject.text;
+
+    if (taskObject.importance) {
         node.dataset.important = true;
         node.style.background = 'linear-gradient(90deg,gold,white)';
     }
@@ -76,15 +129,13 @@ textArea.onkeydown = function(e){
         if (!leftSide.firstChild) {
             console.log(leftSide.firstChild);
         }
-        console.log(textArea.value)
-        leftSide.insertBefore(createAtask(textArea.value), leftSide.firstChild)
+        leftSide.insertBefore(createAtask(), leftSide.firstChild)
         textArea.value = '';
     }
 }
 function createrButton(){
     if (textArea.value.length > 0) {
-        let text = textArea.value;
-        leftSide.insertBefore(createAtask(text), leftSide.firstChild)
+        leftSide.insertBefore(createAtask(), leftSide.firstChild)
         textArea.value = '';
     }
 }

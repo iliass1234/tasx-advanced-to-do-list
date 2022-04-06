@@ -15,6 +15,37 @@ body{
     margin-top: 3px;
     height: 30px;
 }
+.check-btn{
+    font-size: 5px;
+    color: black;
+    padding: 0; 
+    border-radius: 50%; 
+    height: 30px; 
+    width: 30px;
+    border:none;
+    margin-right: 30px;
+}
+.one-task{
+    opacity: 0;
+    transition: 0.5s;
+    background: linear-gradient(90deg,rgb(114, 191, 165),white);
+    border-bottom: 1px solid black;
+    padding-left: 10px; 
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3px;
+    display: flex;
+    font-size: 10px; 
+    color: white; 
+    height: auto;
+    width: 100%;
+}
+.one-task > h2{
+    font-weight: 300;
+    font-family: tahoma, sans-serif;
+    font-size: 17px; 
+    color: black;
+}
 #undo-messege{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;
@@ -230,7 +261,7 @@ body{
     border: 1px solid black;
 }
 
-@media(max-height:500px){
+@media(max-width:500px){
     body{
         background-color: red;
     }
