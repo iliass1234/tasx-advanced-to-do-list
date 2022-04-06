@@ -58,6 +58,7 @@ function returnTaskObj(text, color){
     taskObj.importance = isImportantTask;
     taskObj.text = text;
     taskObj.color = color;
+    taskObj.inProgress = false;
 
     localStorage.setItem(taskObj.id, `${JSON.stringify(taskObj)}`);
     increaseLastTaskId();
@@ -77,6 +78,7 @@ function createAtask(taskObject){
     deleteIcon = document.createElement('span');
     deleteIcon.className = 'material-icons';
     deleteIcon.innerText = 'delete';
+    node.dataset.inProgress = taskObject.inProgress;
     checkBtn.appendChild(deleteIcon);
 
     h2.innerText = taskObject.text;
@@ -100,15 +102,19 @@ function createAtask(taskObject){
     }
     node.onclick = ()=>{
         const p = document.querySelector('#bottom-section > p');
-        p.style.display = 'none';
-        playground.append(node);
-        console.log(p);
-       
+        if (!this.inProgress) {  
+            this.inProgress = true; 
+            p.style.display = 'none';
+            playground.append(node);
+        }else{
+            leftSide.append(node);
+            this.inProgress = false;
+        }
     }
     checkBtn.onclick = function(e){
         e.stopPropagation();
         localStorage.removeItem(taskObject.id);
-        console.log(playground.childElementCount)
+        console.log(playground.childElementCount);
         try {
             leftSide.removeChild(node);
         } catch (error) {
