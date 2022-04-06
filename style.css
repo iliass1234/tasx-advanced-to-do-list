@@ -25,6 +25,30 @@ body{
     border:none;
     margin-right: 30px;
 }
+#delete-all-confirmation-message{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    position: absolute;
+    background-color: rgb(255, 211, 211);
+    padding: 40px;
+    padding-top: 5px;
+    border-radius: 10px;
+    display:none;
+}
+#delete-all-confirmation-message > div{
+    display: flex;
+    justify-content: space-around;
+}
+#delete-all-confirmation-message button{
+    background-color: rgb(44, 99, 75);
+    border: none;
+    padding: 7px 15px;
+    border-radius: 2px;
+    font-size: 15px;
+    color: white;
+}
 .one-task{
     opacity: 0;
     transition: 0.5s;
@@ -261,7 +285,7 @@ body{
     border: 1px solid black;
 }
 
-@media(max-width:500px){
+@media(max-height:500px){
     body{
         background-color: red;
     }

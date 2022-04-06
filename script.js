@@ -23,26 +23,28 @@ startLocalStorage();
 function drawTasks(){
     const lastTaskId = Number(localStorage.getItem('lastTaskId'));
 
-    for (let i = 0; i <= lastTaskId; i++) {
-        let task = localStorage.getItem('task'+i);
+    for (let i = lastTaskId; i >= 0; i--) {
+        let task = localStorage.getItem('task-'+i);
         task = JSON.parse(task);
         if (!task) {
+            console.log('not found');
             continue;
         }
         textArea.value = task.text;
         const firstChild = leftSide.firstChild;
-        leftSide.insertBefore(firstChild, createAtask());
+        leftSide.appendChild(createAtask(task));
         
     }
 }
 
-//drawTasks();
+drawTasks();
 
 function returnValidTaskId(){
     let lastId = Number(localStorage.getItem('lastTaskId'));
     console.log('valid id :'+lastId);
     return lastId++;
 }
+
 function increaseLastTaskId(){
     let lastId = localStorage.getItem('lastTaskId');
     lastId = Number(lastId)+1;
@@ -59,15 +61,14 @@ function returnTaskObj(text, color){
 
     let fullTaskId = 'task-'+taskObj.id;
     localStorage.setItem(fullTaskId, `${JSON.stringify(taskObj)}`);
+    increaseLastTaskId();
 
     return taskObj;
 
 }
 
-
-function createAtask(){
+function createAtask(taskObject){
     const text = textArea.value;
-    const taskObject = returnTaskObj(text);
 
     let node = document.createElement('div');
     let checkBtn = document.createElement('button');
@@ -129,19 +130,20 @@ textArea.onkeydown = function(e){
         if (!leftSide.firstChild) {
             console.log(leftSide.firstChild);
         }
-        leftSide.insertBefore(createAtask(), leftSide.firstChild)
+        leftSide.insertBefore(createAtask(returnTaskObj(textArea.value)), leftSide.firstChild)
         textArea.value = '';
     }
 }
 function createrButton(){
     if (textArea.value.length > 0) {
-        leftSide.insertBefore(createAtask(), leftSide.firstChild)
+        leftSide.insertBefore(createAtask(returnTaskObj(textArea.value)), leftSide.firstChild)
         textArea.value = '';
     }
 }
 
 function deleteAll(){
     const arr = document.querySelectorAll('#left-side > .one-task');
+    localStorage.clear();
     for (const task of arr) {
         leftSide.removeChild(task);
     }
