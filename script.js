@@ -96,8 +96,11 @@ function deleteAll(){
     }
 }
 function resetClock(){
+    const startBtn = document.querySelector('#start-btn');
     document.querySelector('#clock-indicator').style.transform = `translate(-50%, -50%) rotate(${0}deg)`
-    
+    startBtn.innerText = "Start";
+    startBtn.style.backgroundColor = 'rgb(75, 126, 109)';
+    isClockRunning = false;
     while(timeoutsId){
         window.clearTimeout(timeoutsId)
         timeoutsId--
@@ -110,8 +113,6 @@ function pomodoroClock(timeInMinutes){
     // the following line to reset everything;
     resetClock();
 
-
-
     let unitOfTime = 360/60;
     unitOfTime /= timeInMinutes;
     
@@ -119,6 +120,8 @@ function pomodoroClock(timeInMinutes){
         timeoutsId = setTimeout(function(){
             if (i === 360/unitOfTime) {
                 audio.play();
+                isClockRunning = false;
+                resetClock();
                 indicator.style.background = 'linear-gradient(red, black, black)';
                 setTimeout(()=>{
                     indicator.style.background = 'linear-gradient(rgb(51, 255, 0), black, black)';
@@ -132,11 +135,10 @@ function startBtnClick(node){
     if (!isClockRunning) {
         pomodoroClock(Number(inputRange.value));
         node.innerText = 'Reset';
+        node.style.backgroundColor = 'red';
         isClockRunning = true;
     }else{
         resetClock();
-        isClockRunning = false;
-        node.innerText = 'Start';
     }
 }
 
@@ -156,3 +158,8 @@ importantBtn.onclick = function(){
     }
 }
 inputRange.oninput = changePomodoroScreen;
+
+function undo(){
+    const undoDiv = document.querySelector('#undo-messege');
+    undoDiv.style.display = 'none';
+}
