@@ -31,7 +31,6 @@ function drawTasks(){
             console.log('not found');
             continue;
         }
-        textArea.value = task.text;
         const firstChild = leftSide.firstChild;
         leftSide.appendChild(createAtask(task));
         
